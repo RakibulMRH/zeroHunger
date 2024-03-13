@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="zeroHungerModelStoreContainer" CdmEntityContainer="zeroHungerEntities">
+    <EntitySetMapping Name="Details">
+      <EntityTypeMapping TypeName="zeroHungerModel.Detail">
+        <MappingFragment StoreEntitySet="Details">
+          <ScalarProperty Name="collectId" ColumnName="collectId" />
+          <ScalarProperty Name="rId" ColumnName="rId" />
+          <ScalarProperty Name="rider" ColumnName="rider" />
+          <ScalarProperty Name="foodName" ColumnName="foodName" />
+          <ScalarProperty Name="timeRemained" ColumnName="timeRemained" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="zeroHungerModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="empId" ColumnName="empId" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="assigned" ColumnName="assigned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="zeroHungerModel.Login">
+        <MappingFragment StoreEntitySet="Logins">
+          <ScalarProperty Name="sl" ColumnName="sl" />
+          <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="zeroHungerModel.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="rId" ColumnName="rId" />
+          <ScalarProperty Name="foodName" ColumnName="foodName" />
+          <ScalarProperty Name="prsvTime" ColumnName="prsvTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="rider" ColumnName="rider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

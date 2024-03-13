@@ -1,0 +1,49 @@
+﻿@model zeroHunger.EF.Login
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login</h2>
+@if (TempData["Msg"] != null)
+{
+    <span class="alert alert info">@TempData["Msg"]</span>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <label for="uname" class="col-md-2 control-label">User Name</label>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.uname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.uname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pass" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" name="Pass" />
+                @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-success" />
+                <!-- //controller name, action name, route values, html attributes !-->
+                @Html.ActionLink("Register", "Index", "Registration/Index", new { }, new { @class = "btn btn-danger" })
+
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

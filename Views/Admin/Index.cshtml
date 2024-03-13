@@ -1,0 +1,58 @@
+﻿@model IEnumerable<zeroHunger.EF.Restaurant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Admin</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Restaurant ID
+        </th>
+        <th>
+            Food Name
+        </th>
+        <th>
+            Preserved Time
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Rider
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.foodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prsvTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rider)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
