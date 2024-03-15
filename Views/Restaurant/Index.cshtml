@@ -1,61 +1,94 @@
-﻿@model IEnumerable<zeroHunger.EF.Restaurant>
+﻿@model IEnumerable<zeroHunger.DTOs.OrderDTO>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Restaurant</h2>
+<h2>
 
+    @if (Session["res"] != null)
+    {
+
+        var res = (zeroHunger.EF.Restaurant)Session["res"];
+        <text>Welcome, @res.resName</text>
+    }
+    else
+    {
+        <span class="alert alert info">@TempData["Msg"]</span>
+        <text>Restaurant</text>
+    }
+</h2>
+@if (TempData["Msg"] != null)
+{
+    <span class="alert alert info">@TempData["Msg"]</span>
+}
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "AddFood", "Restaurant", new { area = "" }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
+
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.rId)
+            Order ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.foodName)
+            Food Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prsvTime)
+            Preserve Time
+        </th>
+
+        <th>
+            Order Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rider)
+            Rider ID
         </th>
         <th></th>
     </tr>
-    @if (Model != null)
+    @if (Session["res"] != null)
     {
+        var res = (zeroHunger.EF.Restaurant)Session["res"];
+
         foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.rId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.foodName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.prsvTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.rider)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
+            if (@res.rId.Equals(item.rId))
+            {
+
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.oId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.foodName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prsrvTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.orderStatus)
+                    </td>
+                    <td>
+                        @if(item.riderId.Equals(null))
+                        {
+                            <text>Not Assigned</text>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.riderId)
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
         }
     }
 
 </table>
-@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })

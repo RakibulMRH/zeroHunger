@@ -25,11 +25,9 @@ namespace zeroHunger.Controllers
                 empId = emp.empId,
                 eName = emp.eName,
                 status = emp.status,
-                assigned = emp.assigned,
                 mobile = emp.mobile,
                 email = emp.email,
-                Restaurant = emp.Restaurant,
-                Restaurants = emp.Restaurants
+                uname = emp.uname
             };
         }
 
@@ -40,23 +38,15 @@ namespace zeroHunger.Controllers
                 empId = emp.empId,
                 eName = emp.eName,
                 status = emp.status,
-                assigned = emp.assigned,
                 mobile = emp.mobile,
                 email = emp.email,
-                Restaurant = emp.Restaurant,
-                Restaurants = emp.Restaurants
+                uname = emp.uname,
             };
         }   
 
         [HttpPost]
         public ActionResult Index(EmployeeDTO e, string uname, string pass)
         {
-            Employee emp = Convert(e);
-            emp.assigned = null;
-            emp.status = "Pending";
-            db.Employees.Add(emp);
-            db.SaveChanges();
-
             Login l = new Login();
             l.uname = uname;
             l.pass = pass;
@@ -64,9 +54,22 @@ namespace zeroHunger.Controllers
             db.Logins.Add(l);
             db.SaveChanges();
 
+            Employee emp = Convert(e);
+            emp.status = "Pending";
+            db.Employees.Add(emp);
+            db.SaveChanges();
+
+            
+
             TempData["Msg"] = "Registration Successful";
             return RedirectToAction("Index");   
 
+        }
+
+        public ActionResult AddRestaurant()
+        {
+
+            return View();
         }
     }
 }

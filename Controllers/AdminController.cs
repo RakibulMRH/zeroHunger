@@ -3,16 +3,138 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using zeroHunger.DTOs;
+using zeroHunger.EF;
 
 namespace zeroHunger.Controllers
 {
     public class AdminController : Controller
     {
+        zeroHungerEntities db = new zeroHungerEntities();
         // GET: Admin
-        [Auth.AdminAccess]
+        //[Auth.AdminAccess]
         public ActionResult Index()
+        {
+            var data = db.Orders.ToList();
+            return View(Convert(data));
+        }
+        public ActionResult Home()
         {
             return View();
         }
+
+        public ActionResult Employees()
+        {
+            var data = db.Employees.ToList();
+            return View(Convert(data));
+        }
+
+        public ActionResult Restaurants()
+        {
+            var data = db.Restaurants.ToList();
+            return View(Convert(data));
+        }
+        public static Order Convert(OrderDTO f)
+        {
+            return new Order
+            {
+                oId = f.oId,
+                foodName = f.foodName,
+                prsrvTime = f.prsrvTime,
+                rId = f.rId,
+                placeTime = f.placeTime,
+                orderStatus = f.orderStatus
+            };
+        }
+        public static OrderDTO Convert(Order f)
+        {
+            return new OrderDTO
+            {
+                oId = f.oId,
+                foodName = f.foodName,
+                prsrvTime = f.prsrvTime,
+                rId = f.rId,
+                placeTime = f.placeTime,
+                orderStatus = f.orderStatus
+            };
+        }
+
+        public static Employee Convert(EmployeeDTO emp)
+        {
+            return new Employee
+            {
+                empId = emp.empId,
+                eName = emp.eName,
+                status = emp.status,
+                mobile = emp.mobile,
+                email = emp.email,
+                uname = emp.uname
+            };
+        }
+
+        public static EmployeeDTO Convert(Employee emp)
+        {
+            return new EmployeeDTO
+            {
+                empId = emp.empId,
+                eName = emp.eName,
+                status = emp.status,
+                mobile = emp.mobile,
+                email = emp.email,
+                uname = emp.uname,
+            };
+        }
+
+        public static Restaurant Convert(RestaurantDTO res)
+        {
+            return new Restaurant
+            {
+                rId = res.rId,
+                resName = res.resName,
+                uname = res.uname
+            };
+        }
+
+        public static RestaurantDTO Convert(Restaurant res)
+        {
+            return new RestaurantDTO
+            {
+                rId = res.rId,
+                resName = res.resName,
+                uname = res.uname
+            };
+        }
+
+        public static List<RestaurantDTO> Convert(List<Restaurant> data)
+        {
+            var list = new List<RestaurantDTO>();
+            foreach (var item in data)
+            {
+                list.Add(Convert(item));
+            }
+            return list;
+        }
+
+        public static List<EmployeeDTO> Convert(List<Employee> data)
+        {
+            var list = new List<EmployeeDTO>();
+            foreach (var item in data)
+            {
+                list.Add(Convert(item));
+            }
+            return list;
+        }
+        public static List<OrderDTO> Convert(List<Order> data)
+        {
+            var list = new List<OrderDTO>();
+            foreach (var item in data)
+            {
+                list.Add(Convert(item));
+            }
+            return list;
+        }
+
+
+
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using zeroHunger.EF;
 
 namespace zeroHunger.DTOs
 {
@@ -11,5 +12,7 @@ namespace zeroHunger.DTOs
         public string uname { get; set; }
         public string pass { get; set; }
         public string type { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Restaurant> Restaurants { get; set; }
     }
 }

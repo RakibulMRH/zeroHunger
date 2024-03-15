@@ -1,11 +1,10 @@
-﻿@model IEnumerable<zeroHunger.DTOs.OrderDTO>
-
+﻿@model IEnumerable<zeroHunger.DTOs.EmployeeDTO>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Employees";
 }
 
-<h2>System Admin</h2>
+<h2>Employees</h2>
 @Html.ActionLink("Employees", "Employees", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Restaurants", "Restaurants", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Orders", "Index", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
@@ -14,22 +13,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.oId)
+            @Html.DisplayNameFor(model => model.empId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.foodName)
+            @Html.DisplayNameFor(model => model.eName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prsrvTime)
+            @Html.DisplayNameFor(model => model.status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rId)
+            @Html.DisplayNameFor(model => model.assigned)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.orderStatus)
+            @Html.DisplayNameFor(model => model.mobile)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.riderId)
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uname)
         </th>
         <th></th>
     </tr>
@@ -38,22 +40,25 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.oId)
+                @Html.DisplayFor(modelItem => item.empId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.foodName)
+                @Html.DisplayFor(modelItem => item.eName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.prsrvTime)
+                @Html.DisplayFor(modelItem => item.status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.rId)
+                @Html.DisplayFor(modelItem => item.assigned)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.orderStatus)
+                @Html.DisplayFor(modelItem => item.mobile)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.riderId)
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uname)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

@@ -16,7 +16,7 @@ namespace zeroHunger.EF
     public partial class zeroHungerEntities : DbContext
     {
         public zeroHungerEntities()
-            : base("name=zeroHungerEntities")
+            : base("name=zeroHungerEntities2")
         {
         }
     
@@ -28,6 +28,7 @@ namespace zeroHunger.EF
         public virtual DbSet<Detail> Details { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
     }
 }

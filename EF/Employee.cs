@@ -17,18 +17,20 @@ namespace zeroHunger.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            this.Restaurants = new HashSet<Restaurant>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int empId { get; set; }
         public string eName { get; set; }
         public string status { get; set; }
-        public Nullable<int> assigned { get; set; }
         public string mobile { get; set; }
         public string email { get; set; }
+        public string uname { get; set; }
     
-        public virtual Restaurant Restaurant { get; set; }
+        public virtual Employee Employees1 { get; set; }
+        public virtual Employee Employee1 { get; set; }
+        public virtual Login Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Restaurant> Restaurants { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

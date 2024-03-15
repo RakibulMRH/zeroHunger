@@ -1,4 +1,4 @@
-﻿@model zeroHunger.EF.Employee
+﻿@model zeroHunger.DTOs.EmployeeDTO
 
 @{
     ViewBag.Title = "Index";
@@ -42,7 +42,7 @@
     <div class="form-group">
         Username
         <div class="col-md-10">
-            <input type="text" name="uname" class="form-control" name="Pass" />
+            <input type="text" name="uname" class="form-control"  />
             @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="form-group">
         Password
         <div class="col-md-10">
-            <input type="password" name="pass" class="form-control" name="Pass" />
+            <input type="password" name="pass" class="form-control" />
             @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
         </div>
     </div>

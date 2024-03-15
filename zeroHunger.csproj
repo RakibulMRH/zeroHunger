@@ -139,6 +139,7 @@
     <Compile Include="DTOs\DetailDTO.cs" />
     <Compile Include="DTOs\EmployeeDTO.cs" />
     <Compile Include="DTOs\LoginDTO.cs" />
+    <Compile Include="DTOs\OrderDTO.cs" />
     <Compile Include="DTOs\RestaurantDTO.cs" />
     <Compile Include="EF\Detail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -163,6 +164,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Restaurant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -191,8 +195,8 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="EF\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="EF\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -241,11 +245,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Login\Logout.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Registration\AddRestaurant.cshtml" />
+    <Content Include="Views\Restaurant\Index.cshtml" />
+    <Content Include="Views\Restaurant\AddFood.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Employees.cshtml" />
+    <Content Include="Views\Admin\Home.cshtml" />
+    <Content Include="Views\Admin\Restaurants.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

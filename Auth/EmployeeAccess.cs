@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using zeroHunger.EF;
+using static System.Collections.Specialized.BitVector32;
 
 namespace zeroHunger.Auth
 {
@@ -20,6 +21,7 @@ namespace zeroHunger.Auth
                     return true;
                 }
             }
+            httpContext.Session.Abandon();
             return false;
         }
     }

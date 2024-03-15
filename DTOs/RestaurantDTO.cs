@@ -9,12 +9,11 @@ namespace zeroHunger.DTOs
     public class RestaurantDTO
     {
         public int rId { get; set; }
-        public string foodName { get; set; }
-        public System.DateTime prsvTime { get; set; }
-        public string status { get; set; }
-        public Nullable<int> rider { get; set; }
-        public virtual ICollection<Detail> Details { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
-        public virtual Employee Employee { get; set; }
+        public string resName { get; set; }
+        public string uname { get; set; }
+        public virtual ICollection<DetailDTO> Details { get; set; } // Assuming DetailDTO exists
+        public virtual LoginDTO Login { get; set; } // Assuming LoginDTO exists
+        public virtual ICollection<OrderDTO> Orders { get; set; } // Assuming OrderDTO exists
+
     }
 }

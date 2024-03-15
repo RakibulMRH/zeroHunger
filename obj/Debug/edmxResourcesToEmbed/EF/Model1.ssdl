@@ -18,28 +18,38 @@
     <Property Name="empId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="eName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="assigned" Type="int" />
     <Property Name="mobile" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="uname" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Logins">
     <Key>
-      <PropertyRef Name="sl" />
+      <PropertyRef Name="uname" />
     </Key>
     <Property Name="sl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="uname" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="oId" />
+    </Key>
+    <Property Name="oId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="foodName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prsrvTime" Type="datetime" Nullable="false" />
+    <Property Name="rId" Type="int" />
+    <Property Name="orderStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="placeTime" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="riderId" Type="int" />
+  </EntityType>
   <EntityType Name="Restaurants">
     <Key>
       <PropertyRef Name="rId" />
     </Key>
     <Property Name="rId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="foodName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="prsvTime" Type="datetime" Nullable="false" />
-    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="rider" Type="int" />
+    <Property Name="resName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="uname" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Details_Details">
     <End Role="Details" Type="Self.Details" Multiplicity="1" />
@@ -65,27 +75,63 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Employees_Restaurants">
-    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="0..1" />
-    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Restaurants">
-        <PropertyRef Name="rId" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="assigned" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Restaurants_Employees">
-    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
-    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+  <Association Name="FK_Employees_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Employees1" Type="Self.Employees" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="empId" />
       </Principal>
+      <Dependent Role="Employees1">
+        <PropertyRef Name="empId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Logins">
+    <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="uname" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="uname" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Orders">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="empId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="riderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Restaurants">
+    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="rId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="rId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restaurants_Logins">
+    <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="uname" />
+      </Principal>
       <Dependent Role="Restaurants">
-        <PropertyRef Name="rider" />
+        <PropertyRef Name="uname" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -93,6 +139,7 @@
     <EntitySet Name="Details" EntityType="Self.Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Details_Details" Association="Self.FK_Details_Details">
       <End Role="Details" EntitySet="Details" />
@@ -102,12 +149,24 @@
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="Details" EntitySet="Details" />
     </AssociationSet>
-    <AssociationSet Name="FK_Employees_Restaurants" Association="Self.FK_Employees_Restaurants">
-      <End Role="Restaurants" EntitySet="Restaurants" />
+    <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Employees1" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Logins" Association="Self.FK_Employees_Logins">
+      <End Role="Logins" EntitySet="Logins" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK_Restaurants_Employees" Association="Self.FK_Restaurants_Employees">
+    <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
       <End Role="Employees" EntitySet="Employees" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Restaurants" Association="Self.FK_Orders_Restaurants">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restaurants_Logins" Association="Self.FK_Restaurants_Logins">
+      <End Role="Logins" EntitySet="Logins" />
       <End Role="Restaurants" EntitySet="Restaurants" />
     </AssociationSet>
   </EntityContainer>

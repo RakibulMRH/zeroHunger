@@ -26,19 +26,48 @@ namespace zeroHunger.Controllers
                         where u.uname.Equals(l.uname)
                         && u.pass.Equals(l.pass)
                         select u).SingleOrDefault();
+            var emp = (from e in db.Employees
+                       where e.uname.Equals(l.uname)
+                       select e).SingleOrDefault();
+            var res = (from r in db.Restaurants
+                       where r.uname.Equals(l.uname)
+                       select r).SingleOrDefault();
+
             if (user != null)
             {
                 Session["user"] = user;
                 if (user.type.Equals("Admin"))
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Home", "Admin");
                 }
                 if (user.type.Equals("Employee"))
                 {
+                    if (emp != null)
+                    {
+                        if (emp.status.Equals("Pending"))
+                        {
+                            TempData["Msg"] = "Your account is not yet approved";
+                            return RedirectToAction("Index");
+                        }
+                        if (emp.status.Equals("Rejected"))
+                        {
+                            TempData["Msg"] = "Your account is rejected";
+                            return RedirectToAction("Index");
+                        }
+                        if(emp.status.Equals("Approved"))
+                        {
+                            Session["emp"] = emp;
+                            return RedirectToAction("Index", "Employee");
+                        }   
+                    }
                     return RedirectToAction("Index", "Employee");
                 }
                 if (user.type.Equals("Restaurant"))
                 {
+                    if (res != null)
+                    {
+                        Session["res"] = res;
+                    }
                     return RedirectToAction("Index", "Restaurant");
                 }
 

@@ -1,35 +1,25 @@
-﻿@model IEnumerable<zeroHunger.DTOs.OrderDTO>
-
+﻿@model IEnumerable<zeroHunger.DTOs.RestaurantDTO>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Restaurants";
 }
 
-<h2>System Admin</h2>
+<h2>Restaurants</h2>
 @Html.ActionLink("Employees", "Employees", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Restaurants", "Restaurants", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Orders", "Index", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
- 
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.oId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.foodName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prsrvTime)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.rId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.orderStatus)
+            @Html.DisplayNameFor(model => model.resName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.riderId)
+            @Html.DisplayNameFor(model => model.uname)
         </th>
         <th></th>
     </tr>
@@ -38,22 +28,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.oId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.foodName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prsrvTime)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.rId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.orderStatus)
+                @Html.DisplayFor(modelItem => item.resName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.riderId)
+                @Html.DisplayFor(modelItem => item.uname)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

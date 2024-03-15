@@ -1,4 +1,4 @@
-﻿@model zeroHunger.EF.Login
+﻿@model zeroHunger.DTOs.LoginDTO
 
 @{
     ViewBag.Title = "Index";
@@ -36,7 +36,9 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Login" class="btn btn-success" />
                 <!-- //controller name, action name, route values, html attributes !-->
-                @Html.ActionLink("Register", "Index", "Registration/Index", new { }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Register as Employee", "Index", "Registration/Index", new { }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Register as Restaurant", "Index", "Registration/AddRestaurant", new { }, new { @class = "btn btn-danger" })
+
 
             </div>
         </div>
