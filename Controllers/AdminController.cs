@@ -22,11 +22,20 @@ namespace zeroHunger.Controllers
         {
             return View();
         }
-
         public ActionResult Employees()
         {
             var data = db.Employees.ToList();
             return View(Convert(data));
+        }
+        [HttpPost]
+        public ActionResult Employees(int? empId)
+        {
+            var data = db.Employees.Where(x => x.empId == empId).ToList();
+            //change the status of the employee to verified
+            var emp = db.Employees.Find(empId);
+            emp.status = "Verified";
+            db.SaveChanges();
+            return RedirectToAction("Employees");
         }
 
         public ActionResult Restaurants()
@@ -43,7 +52,8 @@ namespace zeroHunger.Controllers
                 prsrvTime = f.prsrvTime,
                 rId = f.rId,
                 placeTime = f.placeTime,
-                orderStatus = f.orderStatus
+                orderStatus = f.orderStatus,
+                riderId = f.riderId
             };
         }
         public static OrderDTO Convert(Order f)
@@ -55,7 +65,8 @@ namespace zeroHunger.Controllers
                 prsrvTime = f.prsrvTime,
                 rId = f.rId,
                 placeTime = f.placeTime,
-                orderStatus = f.orderStatus
+                orderStatus = f.orderStatus,
+                riderId = f.riderId
             };
         }
 
@@ -68,7 +79,8 @@ namespace zeroHunger.Controllers
                 status = emp.status,
                 mobile = emp.mobile,
                 email = emp.email,
-                uname = emp.uname
+                uname = emp.uname,
+                availablity = emp.availablity
             };
         }
 
@@ -82,6 +94,7 @@ namespace zeroHunger.Controllers
                 mobile = emp.mobile,
                 email = emp.email,
                 uname = emp.uname,
+                availablity = emp.availablity
             };
         }
 
@@ -91,7 +104,8 @@ namespace zeroHunger.Controllers
             {
                 rId = res.rId,
                 resName = res.resName,
-                uname = res.uname
+                uname = res.uname,
+                status = res.status
             };
         }
 
@@ -101,7 +115,8 @@ namespace zeroHunger.Controllers
             {
                 rId = res.rId,
                 resName = res.resName,
-                uname = res.uname
+                uname = res.uname,
+                status = res.status
             };
         }
 

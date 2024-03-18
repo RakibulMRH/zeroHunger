@@ -23,6 +23,5 @@ namespace zeroHunger.EF
         public Nullable<int> riderId { get; set; }
     
         public virtual Employee Employee { get; set; }
-        public virtual Restaurant Restaurant { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace zeroHunger.EF
     public partial class zeroHungerEntities : DbContext
     {
         public zeroHungerEntities()
-            : base("name=zeroHungerEntities2")
+            : base("name=zeroHungerEntities")
         {
         }
     

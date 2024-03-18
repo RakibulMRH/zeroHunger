@@ -54,7 +54,7 @@ namespace zeroHunger.Controllers
                             TempData["Msg"] = "Your account is rejected";
                             return RedirectToAction("Index");
                         }
-                        if(emp.status.Equals("Approved"))
+                        if(emp.status.Equals("Verified"))
                         {
                             Session["emp"] = emp;
                             return RedirectToAction("Index", "Employee");

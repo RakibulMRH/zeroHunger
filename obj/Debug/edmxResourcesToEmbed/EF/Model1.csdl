@@ -24,10 +24,11 @@
     <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="availablity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
     <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
     <NavigationProperty Name="Login" Relationship="Self.FK_Employees_Logins" FromRole="Employees" ToRole="Logins" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Orders" FromRole="Employees" ToRole="Orders" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Restaurants" FromRole="Employees" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Login">
     <Key>
@@ -51,8 +52,7 @@
     <Property Name="orderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="placeTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="riderId" Type="Int32" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_Orders_Orders" FromRole="Orders" ToRole="Employees" />
-    <NavigationProperty Name="Restaurant" Relationship="Self.FK_Orders_Restaurants" FromRole="Orders" ToRole="Restaurants" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Orders_Restaurants" FromRole="Orders" ToRole="Employees" />
   </EntityType>
   <EntityType Name="Restaurant">
     <Key>
@@ -63,7 +63,7 @@
     <Property Name="uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Details" Relationship="Self.FK_Details_Restaurants" FromRole="Restaurants" ToRole="Details" />
     <NavigationProperty Name="Login" Relationship="Self.FK_Restaurants_Logins" FromRole="Restaurants" ToRole="Logins" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Restaurants" FromRole="Restaurants" ToRole="Orders" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Details_Details">
     <End Role="Details" Type="Self.Detail" Multiplicity="1" />
@@ -113,7 +113,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Orders">
+  <Association Name="FK_Orders_Restaurants">
     <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -137,19 +137,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Restaurants">
-    <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Restaurants">
-        <PropertyRef Name="rId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="rId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="zeroHungerEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="zeroHungerEntities4" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Details" EntityType="Self.Detail" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="Logins" EntityType="Self.Login" />
@@ -171,17 +159,13 @@
       <End Role="Logins" EntitySet="Logins" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
+    <AssociationSet Name="FK_Orders_Restaurants" Association="Self.FK_Orders_Restaurants">
       <End Role="Employees" EntitySet="Employees" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Restaurants_Logins" Association="Self.FK_Restaurants_Logins">
       <End Role="Logins" EntitySet="Logins" />
       <End Role="Restaurants" EntitySet="Restaurants" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Restaurants" Association="Self.FK_Orders_Restaurants">
-      <End Role="Restaurants" EntitySet="Restaurants" />
-      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

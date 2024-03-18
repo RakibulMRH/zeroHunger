@@ -22,7 +22,7 @@
             @Html.DisplayNameFor(model => model.status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.assigned)
+            @Html.DisplayNameFor(model => model.availablity)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.mobile)
@@ -33,6 +33,7 @@
         <th>
             @Html.DisplayNameFor(model => model.uname)
         </th>
+        <th>Action</th>
         <th></th>
     </tr>
 
@@ -49,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.assigned)
+                @Html.DisplayFor(modelItem => item.availablity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.mobile)
@@ -59,6 +60,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.uname)
+            </td>
+            <td>
+                @if (item.status.Equals("Pending"))
+                {
+                    <form action="/Admin/Employees" method="post">
+                        <input type="hidden" name="empId" value="@item.empId" />
+                        <input type="submit" value="Approve Employee" name="" class="btn btn-success" />
+                    </form>
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

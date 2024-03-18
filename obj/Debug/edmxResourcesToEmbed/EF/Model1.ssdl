@@ -21,6 +21,7 @@
     <Property Name="mobile" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="uname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="availablity" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Logins">
     <Key>
@@ -50,6 +51,7 @@
     <Property Name="rId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="resName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="uname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Details_Details">
     <End Role="Details" Type="Self.Details" Multiplicity="1" />
@@ -99,7 +101,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Orders">
+  <Association Name="FK_Orders_Restaurants">
     <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -108,18 +110,6 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="riderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Restaurants">
-    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Restaurants">
-        <PropertyRef Name="rId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="rId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -157,12 +147,8 @@
       <End Role="Logins" EntitySet="Logins" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
-      <End Role="Employees" EntitySet="Employees" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
     <AssociationSet Name="FK_Orders_Restaurants" Association="Self.FK_Orders_Restaurants">
-      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Employees" EntitySet="Employees" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Restaurants_Logins" Association="Self.FK_Restaurants_Logins">

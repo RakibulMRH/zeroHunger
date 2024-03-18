@@ -18,17 +18,15 @@ namespace zeroHunger.EF
         public Restaurant()
         {
             this.Details = new HashSet<Detail>();
-            this.Orders = new HashSet<Order>();
         }
     
         public int rId { get; set; }
         public string resName { get; set; }
         public string uname { get; set; }
+        public string status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detail> Details { get; set; }
         public virtual Login Login { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

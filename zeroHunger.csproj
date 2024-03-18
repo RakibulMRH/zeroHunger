@@ -255,6 +255,7 @@
     <Content Include="Views\Admin\Employees.cshtml" />
     <Content Include="Views\Admin\Home.cshtml" />
     <Content Include="Views\Admin\Restaurants.cshtml" />
+    <Content Include="Views\Employee\Completed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

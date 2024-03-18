@@ -21,7 +21,11 @@
         <th>
             @Html.DisplayNameFor(model => model.uname)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+
+        </th>
+        <th>Action</th>
     </tr>
 
     @foreach (var item in Model)
@@ -36,6 +40,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.uname)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+                </td>
+            
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

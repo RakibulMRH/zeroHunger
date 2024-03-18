@@ -4,82 +4,95 @@
     ViewBag.Title = "Index";
 }
 
-<h2>
-
-    @if (Session["emp"] != null)
-    {
-        var emp = (zeroHunger.EF.Employee)Session["emp"];
-        <text>Welcome, @emp.eName </text>
-    }
-    else
+@if (Session["emp"] != null)
+{
+    var emp = (zeroHunger.EF.Employee)Session["emp"];
+    <h2><text>Welcome, @emp.eName </text></h2>
+    if (TempData["Msg"] != null)
     {
         <span class="alert alert info">@TempData["Msg"]</span>
-        <text>Employee</text>
     }
-</h2>
-@if (TempData["Msg"] != null)
-{
-    <span class="alert alert info">@TempData["Msg"]</span>
-}
-<p>
-    
-    @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
+    <p>
 
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Order ID
-        </th>
-        <th>
-            Food Name
-        </th>
-        <th>
-            Preserve Time
-        </th>
+        @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
 
-        <th>
-            Order Status
-        </th>
-        <th>
-            Rider ID
-        </th>
-        <th></th>
-    </tr>
-
-
-    @foreach (var item in Model)
-    {
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.oId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.foodName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prsrvTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.orderStatus)
-            </td>
-            <td>
-                @if (item.riderId.Equals(null))
-                {
-                    @Html.ActionLink("Accept Order", "Collecting", "Employee", new { area = "" }, new { @class = "btn btn-success" })
-                }
-                else
-                {
-                    @Html.DisplayFor(modelItem => item.riderId)
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            <th>
+                Order ID
+            </th>
+            <th>
+                Food Name
+            </th>
+            <th>
+                Preserve Time
+            </th>
+
+            <th>
+                Order Status
+            </th>
+            <th>
+                Rider ID
+            </th>
+            <th>
+                Action
+            </th>
         </tr>
-    }
 
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.oId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.foodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prsrvTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.riderId)
+                </td>
+                <td>
+                    @if (item.riderId.Equals(null) && item.orderStatus.Equals("Collect"))
+                    {
+                        <form action="/Employee/Index" method="post">
+                            <input type="hidden" name="rId" value="@emp.empId" />
+                            <input type="submit" value="Accept Order" name="" class="btn btn-success" />
+                        </form>
+                    }
+                    @if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collecting"))
+                    {
+                        <form action="/Employee/Completed" method="post">
+                            <input type="hidden" name="rId" value="@emp.empId" />
+                            <input type="hidden" name="orderStatus" value="@item.orderStatus" />
+                            <input type="submit" value="Order Completed" name="" class="btn btn-success" />
+                        </form>
+                    }
+                    @if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collected"))
+                    {
+                        <text>Order Completed</text>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+}
+else
+{
+    Response.Redirect("/Login/Index");
+}
+

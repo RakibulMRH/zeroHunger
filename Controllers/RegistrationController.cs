@@ -27,7 +27,8 @@ namespace zeroHunger.Controllers
                 status = emp.status,
                 mobile = emp.mobile,
                 email = emp.email,
-                uname = emp.uname
+                uname = emp.uname,
+                availablity = emp.availablity
             };
         }
 
@@ -41,30 +42,46 @@ namespace zeroHunger.Controllers
                 mobile = emp.mobile,
                 email = emp.email,
                 uname = emp.uname,
+                availablity = emp.availablity
             };
         }   
 
         [HttpPost]
         public ActionResult Index(EmployeeDTO e, string uname, string pass)
         {
-            Login l = new Login();
-            l.uname = uname;
-            l.pass = pass;
-            l.type = "Employee";
-            db.Logins.Add(l);
-            db.SaveChanges();
+            try
+            {
+                Login l = new Login();
+                l.uname = uname;
+                l.pass = pass;
+                l.type = "Employee";
 
-            Employee emp = Convert(e);
-            emp.status = "Pending";
-            db.Employees.Add(emp);
-            db.SaveChanges();
+                db.Logins.Add(l);
+                db.SaveChanges();
 
-            
+                e.availablity = "Available";
 
-            TempData["Msg"] = "Registration Successful";
-            return RedirectToAction("Index");   
+                Employee emp = Convert(e);
+                emp.status = "Pending";
+                db.Employees.Add(emp);
+                db.SaveChanges();
 
+                TempData["Msg"] = "Registration Successful";
+
+                ViewData["eNameValue"] = e.eName;
+                ViewData["mobileValue"] = e.mobile;
+                ViewData["emailValue"] = e.email;
+                ViewData["unameValue"] = e.uname;
+                ViewData["passValue"] = pass;
+                return RedirectToAction("Index");
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                TempData["Msg"] = ex.InnerException.InnerException.Message;
+                return RedirectToAction("Index");
+            }
         }
+
 
         public ActionResult AddRestaurant()
         {

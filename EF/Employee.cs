@@ -26,6 +26,7 @@ namespace zeroHunger.EF
         public string mobile { get; set; }
         public string email { get; set; }
         public string uname { get; set; }
+        public string availablity { get; set; }
     
         public virtual Employee Employees1 { get; set; }
         public virtual Employee Employee1 { get; set; }
