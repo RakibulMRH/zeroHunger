@@ -73,7 +73,7 @@ namespace zeroHunger.Controllers
                 ViewData["emailValue"] = e.email;
                 ViewData["unameValue"] = e.uname;
                 ViewData["passValue"] = pass;
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Login");
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
@@ -82,11 +82,67 @@ namespace zeroHunger.Controllers
             }
         }
 
-
+        [HttpGet]
         public ActionResult AddRestaurant()
         {
-
             return View();
         }
+        [HttpPost]
+        public ActionResult AddRestaurant(RestaurantDTO r, string uname, string pass)
+        {
+                try
+                {
+                    if (!string.IsNullOrEmpty(r.uname))
+                    {
+                        Login dl = new Login();
+                        dl.uname = r.uname;
+                        dl.pass = pass;
+                        dl.type = "Restaurant";
+
+                        db.Logins.Add(dl);
+                        db.SaveChanges();
+
+                        Restaurant res = new Restaurant
+                        {
+                            resName = r.resName,
+                            uname = r.uname,
+                            status = r.status = "Pending"
+                        };
+                        db.Restaurants.Add(res);
+                        db.SaveChanges();
+                        TempData["Msg"] = "Registration Successful";
+                        return RedirectToAction("Index", "Login");
+                    }
+                    else
+                    {
+                        TempData["Msg"] = "Username already taken!";
+                        return RedirectToAction("AddRestaurant");
+                    }
+
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+                {
+                    TempData["Msg"] = "Username already Exists" + "/n" + ex.InnerException.InnerException.Message;
+                    return RedirectToAction("AddRestaurant");
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            TempData["Msg"] = "Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage;
+
+                            Console.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                            return RedirectToAction("AddRestaurant");
+
+                        }
+                    }
+                }
+                return RedirectToAction("AddRestaurant");
+            }
+            
+        }
     }
-}
+
+

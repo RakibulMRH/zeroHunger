@@ -10,6 +10,7 @@
     <Property Name="foodName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="timeRemained" Type="datetime" Nullable="false" />
     <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="resName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Employees">
     <Key>
@@ -43,6 +44,7 @@
     <Property Name="orderStatus" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="placeTime" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="riderId" Type="int" />
+    <Property Name="resName" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Restaurants">
     <Key>

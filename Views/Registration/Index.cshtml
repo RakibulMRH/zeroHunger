@@ -20,7 +20,7 @@
         <div class="form-group">
             Name
             <div class="col-md-10">
-                @Html.EditorFor(model => model.eName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.eName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.eName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             Mobile
             <div class="col-md-10">
-                @Html.EditorFor(model => model.mobile, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.mobile, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.mobile, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="form-group">
             Email
             <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,15 +44,15 @@
         <div class="form-group">
             Username
             <div class="col-md-10">
-                <input type="text" name="uname" class="form-control" value="@ViewData["unameValue"]" />
-                @Html.ValidationMessageFor(model => model.uname, "", new { @class = "text-danger" })
+                <input type="text" name="uname" class="form-control" value="@ViewData["unameValue"]" required/>
+                @Html.ValidationMessageFor(model => model.uname, "", new { @class = "text-danger", required = "required" })
             </div>
         </div>
 
         <div class="form-group">
             Password
             <div class="col-md-10">
-                <input type="password" name="pass" class="form-control" value="@ViewData["passValue"]" />
+                <input type="password" name="pass" class="form-control" value="@ViewData["passValue"]" required/>
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,7 +62,6 @@
                 <br />
                 <input type="submit" value="Create" class="btn btn-outline-success" />
                 @Html.ActionLink("Back to Login", "Index", "Login", new { }, new { @class = "btn btn-outline-dark" })
-
             </div>
         </div>
     </div>

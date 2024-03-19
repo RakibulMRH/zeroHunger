@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Details">
       <EntityTypeMapping TypeName="zeroHungerModel.Detail">
         <MappingFragment StoreEntitySet="Details">
+          <ScalarProperty Name="resName" ColumnName="resName" />
           <ScalarProperty Name="collectId" ColumnName="collectId" />
           <ScalarProperty Name="rId" ColumnName="rId" />
           <ScalarProperty Name="rider" ColumnName="rider" />
@@ -39,6 +40,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="zeroHungerModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="resName" ColumnName="resName" />
           <ScalarProperty Name="oId" ColumnName="oId" />
           <ScalarProperty Name="foodName" ColumnName="foodName" />
           <ScalarProperty Name="prsrvTime" ColumnName="prsrvTime" />

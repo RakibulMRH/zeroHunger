@@ -13,6 +13,7 @@
     <NavigationProperty Name="Details1" Relationship="Self.FK_Details_Details" FromRole="Details" ToRole="Details1" />
     <NavigationProperty Name="Detail1" Relationship="Self.FK_Details_Details" FromRole="Details1" ToRole="Details" />
     <NavigationProperty Name="Restaurant" Relationship="Self.FK_Details_Restaurants" FromRole="Details" ToRole="Restaurants" />
+    <Property Name="resName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -53,6 +54,7 @@
     <Property Name="placeTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="riderId" Type="Int32" />
     <NavigationProperty Name="Employee" Relationship="Self.FK_Orders_Restaurants" FromRole="Orders" ToRole="Employees" />
+    <Property Name="resName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Restaurant">
     <Key>

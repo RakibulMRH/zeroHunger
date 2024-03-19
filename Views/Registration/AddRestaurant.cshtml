@@ -4,49 +4,48 @@
     ViewBag.Title = "AddRestaurant";
 }
 
-<h2>AddRestaurant</h2>
+<h2>Add your Restaurant</h2>
 @if (TempData["Msg"] != null)
 {
     <span class="alert alert-info">@TempData["Msg"]</span>
 }
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+
     <div class="form-horizontal">
-        <h4>RestaurantDTO</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.rId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.rId, new { htmlAttributes = new { @class = "form-control", @Value = (string)ViewData["rIdValue"] } })
-                @Html.ValidationMessageFor(model => model.rId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.resName, htmlAttributes: new { @class = "control-label col-md-2" })
+            Restaurant Name
             <div class="col-md-10">
-                @Html.EditorFor(model => model.resName, new { htmlAttributes = new { @class = "form-control", @Value = (string)ViewData["resNameValue"] } })
+                @Html.EditorFor(model => model.resName, new { htmlAttributes = new { @class = "form-control" , required = "required" } })
                 @Html.ValidationMessageFor(model => model.resName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.uname, htmlAttributes: new { @class = "control-label col-md-2" })
+            Username
             <div class="col-md-10">
-                @Html.EditorFor(model => model.uname, new { htmlAttributes = new { @class = "form-control", @Value = (string)ViewData["unameValue"] } })
+                @Html.EditorFor(model => model.uname, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.uname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Password
+            <div class="col-md-10">
+                <input type="password" name="pass" class="form-control" value="@ViewData["passValue"]" required/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+                @Html.ActionLink("Back to Login", "Index", "Login", new { }, new { @class = "btn btn-outline-dark" })
             </div>
         </div>
     </div>
 }
-
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <br />
-        <input type="submit" value="Create" class="btn btn-outline-success" />
-        @Html.ActionLink("Back to Login", "Index", "Login", new { }, new { @class = "btn btn-outline-dark" })
-    </div>
-</div>

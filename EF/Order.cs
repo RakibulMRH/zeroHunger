@@ -21,6 +21,7 @@ namespace zeroHunger.EF
         public string orderStatus { get; set; }
         public byte[] placeTime { get; set; }
         public Nullable<int> riderId { get; set; }
+        public string resName { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

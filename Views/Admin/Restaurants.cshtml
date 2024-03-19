@@ -41,8 +41,23 @@
                 @Html.DisplayFor(modelItem => item.uname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.status)
-                </td>
+
+                @if (item.status == "Pending")
+                {
+                    <form action="/Admin/Restaurants" method="post">
+                        <input type="hidden" name="rId" value="@item.rId" />
+                        <input type="submit" value="Approve Restaurant" name="" class="btn btn-success" />
+                    </form>
+                    <form action="/Admin/RestaurantsRemove" method="post">
+                        <input type="hidden" name="rId" value="@item.rId" />
+                        <input type="submit" value="Remove Restaurant" name="" class="btn btn-danger" />
+                    </form>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.status)
+                }
+            </td>
             
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

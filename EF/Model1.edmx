@@ -15,6 +15,7 @@
           <Property Name="foodName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="timeRemained" Type="datetime" Nullable="false" />
           <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="resName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -48,6 +49,7 @@
           <Property Name="orderStatus" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="placeTime" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="riderId" Type="int" />
+          <Property Name="resName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Restaurants">
           <Key>
@@ -178,6 +180,7 @@
           <NavigationProperty Name="Details1" Relationship="Self.FK_Details_Details" FromRole="Details" ToRole="Details1" />
           <NavigationProperty Name="Detail1" Relationship="Self.FK_Details_Details" FromRole="Details1" ToRole="Details" />
           <NavigationProperty Name="Restaurant" Relationship="Self.FK_Details_Restaurants" FromRole="Details" ToRole="Restaurants" />
+          <Property Name="resName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -218,6 +221,7 @@
           <Property Name="placeTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="riderId" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Orders_Restaurants" FromRole="Orders" ToRole="Employees" />
+          <Property Name="resName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Restaurant">
           <Key>
@@ -342,6 +346,7 @@
           <EntitySetMapping Name="Details">
             <EntityTypeMapping TypeName="zeroHungerModel.Detail">
               <MappingFragment StoreEntitySet="Details">
+                <ScalarProperty Name="resName" ColumnName="resName" />
                 <ScalarProperty Name="collectId" ColumnName="collectId" />
                 <ScalarProperty Name="rId" ColumnName="rId" />
                 <ScalarProperty Name="rider" ColumnName="rider" />
@@ -377,6 +382,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="zeroHungerModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="resName" ColumnName="resName" />
                 <ScalarProperty Name="oId" ColumnName="oId" />
                 <ScalarProperty Name="foodName" ColumnName="foodName" />
                 <ScalarProperty Name="prsrvTime" ColumnName="prsrvTime" />

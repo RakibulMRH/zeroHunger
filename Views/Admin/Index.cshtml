@@ -17,6 +17,9 @@
             @Html.DisplayNameFor(model => model.oId)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.resName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.foodName)
         </th>
         <th>
@@ -31,6 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.riderId)
         </th>
+
         <th></th>
     </tr>
 
@@ -41,11 +45,15 @@
                 @Html.DisplayFor(modelItem => item.oId)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.resName)
+                </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.foodName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.prsrvTime)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.rId)
             </td>

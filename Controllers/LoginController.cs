@@ -62,13 +62,18 @@ namespace zeroHunger.Controllers
                     }
                     return RedirectToAction("Index", "Employee");
                 }
-                if (user.type.Equals("Restaurant"))
+                if (user.type.Equals("Restaurant") && res != null)
                 {
-                    if (res != null)
+                    if (res.status.Equals("Verified"))
                     {
                         Session["res"] = res;
+                        return RedirectToAction("Index", "Restaurant");
                     }
-                    return RedirectToAction("Index", "Restaurant");
+                    else
+                    {
+                        TempData["Msg"] = "Your account is not yet approved";
+                        return RedirectToAction("Index");
+                    }
                 }
 
                 return RedirectToAction("Index");

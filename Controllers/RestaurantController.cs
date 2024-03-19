@@ -24,7 +24,9 @@ namespace zeroHunger.Controllers
                 prsrvTime = f.prsrvTime,
                 rId = f.rId,
                 placeTime = f.placeTime,
-                orderStatus = f.orderStatus
+                orderStatus = f.orderStatus,
+                resName = f.resName,
+                riderId = f.riderId
             };
         }
         public static OrderDTO Convert(Order f)
@@ -36,7 +38,9 @@ namespace zeroHunger.Controllers
                 prsrvTime = f.prsrvTime,
                 rId = f.rId,
                 placeTime = f.placeTime,
-                orderStatus = f.orderStatus
+                orderStatus = f.orderStatus,
+                resName = f.resName,
+                riderId = f.riderId
 
             };
         }
@@ -74,8 +78,9 @@ namespace zeroHunger.Controllers
             {
                 f.prsrvTime = combinedDateTime;
             }*/
-
+            var findResName = db.Restaurants.Where(x => x.rId == f.rId).ToList();
             f.orderStatus = "collect";
+            f.resName = findResName[0].resName;
             Order food = Convert(f);
             db.Orders.Add(food);
             db.SaveChanges();

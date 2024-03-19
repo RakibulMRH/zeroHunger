@@ -23,7 +23,9 @@ namespace zeroHunger.Controllers
                 rId = f.rId,
                 placeTime = f.placeTime,
                 orderStatus = f.orderStatus,
-                riderId = f.riderId
+                riderId = f.riderId,
+                resName = f.resName
+
             };
         }
         public static OrderDTO Convert(Order f)
@@ -36,7 +38,8 @@ namespace zeroHunger.Controllers
                 rId = f.rId,
                 placeTime = f.placeTime,
                 orderStatus = f.orderStatus,
-                riderId = f.riderId
+                riderId = f.riderId,
+                resName = f.resName
 
             };
         }
@@ -54,63 +57,93 @@ namespace zeroHunger.Controllers
         public ActionResult Index()
         {
             var data = db.Orders.ToList();
+            data = data.OrderByDescending(x => x.oId).ToList();
+
             var convertedData = Convert(data);
             return View(convertedData);
         }
 
         [HttpPost]
-        public ActionResult Index(int rId)
+        public ActionResult Index(int rId, int riderId)
         {
-            var data = db.Orders.Where(x => x.rId == rId).ToList();
+            var data = db.Orders.Where(x => (x.rId == rId && x.orderStatus == "collect")).ToList();
             var dataPost = db.Orders.ToList();
             var convertedData = Convert(dataPost);
+           
             foreach (var item in data)
             {
                 item.orderStatus = "Collecting";
-                item.riderId = rId;
+                item.riderId = riderId;
             }
-
-            var rider = db.Employees.Where(x => x.empId == rId).FirstOrDefault();
             db.SaveChanges();
+            var rider = db.Employees.Where(x => x.empId == riderId).FirstOrDefault();
+            
             if (rider.availablity != "Assigned")
             {
                 rider.availablity = "Assigned";
                 var emp = (from e in db.Employees
-                           where e.empId.Equals(rId)
+                           where e.empId.Equals(riderId)
                            select e).SingleOrDefault();
                 Session["emp"] = emp;
                 db.SaveChanges();
-                return View(convertedData);
+                return RedirectToAction("Index");
             }
 
             else
             {
                 TempData["Msg"] = "You are already assigned to an order";
-                return View(convertedData);
+                return RedirectToAction("Index");
             }
-
         }
         [HttpPost]
-        public ActionResult Completed(int rId, string orderStatus)
+        public ActionResult Completed(int rId, int riderId)
         {
-            //change order status to collected in db where rId = rId
-            var data = db.Orders.Where(x => x.rId == rId).ToList();
-            var dataPost = db.Orders.ToList();
-            var convertedData = Convert(dataPost);
-            foreach (var item in data)
+            var ordersToComplete = db.Orders.Where(x => x.rId == rId && x.orderStatus == "Collecting").ToList();
+
+            // Convert all orders
+            var convertedData = Convert(db.Orders.ToList());
+
+            string originalOrderStatus = ""; // To store the original order status
+
+            foreach (var order in ordersToComplete)
             {
-                item.orderStatus = "Collected";
-                item.riderId = rId;
+                originalOrderStatus = order.orderStatus; // Save original status
+                order.orderStatus = "Collected";
+                order.riderId = riderId;
+
+                // Update restaurant status
+                var restaurant = db.Orders.FirstOrDefault(r => r.rId == rId);
+                if (restaurant != null)
+                {
+                    restaurant.orderStatus = "Collected";
+                }
             }
 
-            var rider = db.Employees.Where(x => x.empId == rId).FirstOrDefault();
-            rider.availablity = "Available";
             db.SaveChanges();
-            var emp = (from e in db.Employees
-                       where e.empId.Equals(rId)
-                       select e).SingleOrDefault();
-            Session["emp"] = emp;
+
+            var rider = db.Employees.FirstOrDefault(x => x.empId == riderId);
+
+            if (rider != null)
+            {
+                if (rider.availablity == "Assigned")
+                {
+                    rider.availablity = "Available";
+                    Session["emp"] = rider;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Msg"] = originalOrderStatus + " You are already assigned to an order";
+                }
+            }
+            else
+            {
+                TempData["Msg"] = "Rider not found"; // Handle the case where rider is not found
+            }
+
             return RedirectToAction("Index");
         }
+
     }
 }

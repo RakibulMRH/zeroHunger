@@ -14,6 +14,8 @@ namespace zeroHunger.DTOs
         public Nullable<int> rId { get; set; }
         public string orderStatus { get; set; }
         public byte[] placeTime { get; set; }
+        public string resName { get; set; }
+
         public Nullable<int> riderId { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Restaurant Restaurant { get; set; }

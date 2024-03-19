@@ -16,6 +16,7 @@ namespace zeroHunger.Controllers
         public ActionResult Index()
         {
             var data = db.Orders.ToList();
+            data = data.OrderByDescending(x => x.oId).ToList();
             return View(Convert(data));
         }
         public ActionResult Home()
@@ -25,7 +26,16 @@ namespace zeroHunger.Controllers
         public ActionResult Employees()
         {
             var data = db.Employees.ToList();
+            data = data.OrderByDescending(x => x.empId).ToList();
+
             return View(Convert(data));
+        }
+        public ActionResult EmployeesRemove(int empId)
+        {
+            var emp = db.Employees.Find(empId);
+            db.Employees.Remove(emp);
+            db.SaveChanges();
+            return RedirectToAction("Employees");
         }
         [HttpPost]
         public ActionResult Employees(int? empId)
@@ -41,7 +51,28 @@ namespace zeroHunger.Controllers
         public ActionResult Restaurants()
         {
             var data = db.Restaurants.ToList();
+            data = data.OrderByDescending(x => x.rId).ToList();
+
             return View(Convert(data));
+        }
+
+        public ActionResult RestaurantsRemove(int rId)
+        {
+            var res = db.Restaurants.Find(rId);
+            db.Restaurants.Remove(res);
+            db.SaveChanges();
+            return RedirectToAction("Restaurants");
+        }
+
+        [HttpPost]
+        public ActionResult Restaurants(int? rId)
+        {
+            var data = db.Restaurants.Where(x => x.rId == rId).ToList();
+            //change the status of the restaurant to verified
+            var res = db.Restaurants.Find(rId);
+                res.status = "Verified";
+            db.SaveChanges();
+            return RedirectToAction("Restaurants");
         }
         public static Order Convert(OrderDTO f)
         {

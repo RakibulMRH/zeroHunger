@@ -23,6 +23,9 @@
                 Order ID
             </th>
             <th>
+                Restaurant Name
+                </th>
+            <th>
                 Food Name
             </th>
             <th>
@@ -48,6 +51,10 @@
                     @Html.DisplayFor(modelItem => item.oId)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.resName)
+                    </td>
+
+                <td>
                     @Html.DisplayFor(modelItem => item.foodName)
                 </td>
                 <td>
@@ -60,18 +67,19 @@
                     @Html.DisplayFor(modelItem => item.riderId)
                 </td>
                 <td>
-                    @if (item.riderId.Equals(null) && item.orderStatus.Equals("Collect"))
+                    @if (item.riderId.Equals(null) && item.orderStatus.Equals("collect"))
                     {
                         <form action="/Employee/Index" method="post">
-                            <input type="hidden" name="rId" value="@emp.empId" />
+                            <input type="hidden" name="rId" value="@item.rId" />
+                            <input type="hidden" name="riderId" value="@emp.empId" />
                             <input type="submit" value="Accept Order" name="" class="btn btn-success" />
                         </form>
                     }
                     @if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collecting"))
                     {
                         <form action="/Employee/Completed" method="post">
-                            <input type="hidden" name="rId" value="@emp.empId" />
-                            <input type="hidden" name="orderStatus" value="@item.orderStatus" />
+                            <input type="hidden" name="rId" value="@item.rId" />
+                            <input type="hidden" name="riderId" value="@emp.empId" />
                             <input type="submit" value="Order Completed" name="" class="btn btn-success" />
                         </form>
                     }

@@ -68,6 +68,10 @@
                         <input type="hidden" name="empId" value="@item.empId" />
                         <input type="submit" value="Approve Employee" name="" class="btn btn-success" />
                     </form>
+                    <form action="/Admin/EmployeesRemove" method="post">
+                        <input type="hidden" name="empId" value="@item.empId" />
+                        <input type="submit" value="Remove Employee" name="" class="btn btn-danger" />
+                    </form>
                 }
             </td>
             <td>
