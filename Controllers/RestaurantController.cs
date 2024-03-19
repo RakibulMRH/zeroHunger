@@ -13,7 +13,7 @@ namespace zeroHunger.Controllers
     {
         zeroHungerEntities db = new zeroHungerEntities();
         // GET: Restaurant
-       // [Auth.RestaurantAccess]
+       [Auth.RestaurantAccess]
         
         public static Order Convert(OrderDTO f)
         {

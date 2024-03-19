@@ -1,68 +1,68 @@
-﻿@model IEnumerable<zeroHunger.DTOs.RestaurantDTO>
+﻿@model IEnumerable<zeroHunger.DTOs.DetailDTO>
 
 @{
-    ViewBag.Title = "Restaurants";
+    ViewBag.Title = "Details";
 }
 
-<h2>Restaurants</h2>
+<h2>Details</h2>
 @Html.ActionLink("Employees", "Employees", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Restaurants", "Restaurants", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Orders", "Index", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Details", "Details", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
 
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.collectId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.rId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.resName)
+            @Html.DisplayNameFor(model => model.rider)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.uname)
+            @Html.DisplayNameFor(model => model.foodName)
+        </th>
+        <th>
+            Order recieved at
         </th>
         <th>
             @Html.DisplayNameFor(model => model.status)
-
         </th>
-        <th>Action</th>
+        <th>
+            @Html.DisplayNameFor(model => model.resName)
+        </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.collectId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.rId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rider)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeRemained)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.resName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.uname)
-            </td>
-            <td>
-
-                
-                    @Html.DisplayFor(modelItem => item.status)
-                
-            </td>
-
-            <td>
-
-                @if (item.status == "Pending")
-                {
-                    <form action="/Admin/Restaurants" method="post">
-                        <input type="hidden" name="rId" value="@item.rId" />
-                        <input type="submit" value="Approve Restaurant" name="" class="btn btn-success" />
-                    </form>
-                    <form action="/Admin/RestaurantsRemove" method="post">
-                        <input type="hidden" name="rId" value="@item.rId" />
-                        <input type="submit" value="Remove Restaurant" name="" class="btn btn-danger" />
-                    </form>
-                }
-            </td>
+            <td></td>
         </tr>
     }
-
 </table>

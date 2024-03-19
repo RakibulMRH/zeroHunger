@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,16 @@ namespace zeroHunger.Controllers
     public class AdminController : Controller
     {
         zeroHungerEntities db = new zeroHungerEntities();
+
+        private readonly zeroHungerEntities _db;
+
+        public AdminController()
+        {
+            _db = new zeroHungerEntities(); 
+        }
+
         // GET: Admin
-        //[Auth.AdminAccess]
+        [Auth.AdminAccess]
         public ActionResult Index()
         {
             var data = db.Orders.ToList();
@@ -63,7 +72,17 @@ namespace zeroHunger.Controllers
             db.SaveChanges();
             return RedirectToAction("Restaurants");
         }
+        public ActionResult Details()
+        {
+            var mapper = MvcApplication.Mapper;
 
+            var data = _db.Details.ToList();
+            data = data.OrderByDescending(x => x.collectId).ToList();
+
+            var dtoData = mapper.Map<List<DetailDTO>>(data);
+
+            return View(dtoData);
+        }
         [HttpPost]
         public ActionResult Restaurants(int? rId)
         {

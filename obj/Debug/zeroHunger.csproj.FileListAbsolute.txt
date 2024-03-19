@@ -51,6 +51,7 @@ E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\ros
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\roslyn\VBCSCompiler.exe
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\roslyn\VBCSCompiler.exe.config
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\Antlr3.Runtime.dll
+E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\AutoMapper.dll
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\EntityFramework.dll
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\EntityFramework.SqlServer.dll
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -64,6 +65,7 @@ E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\Sys
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\System.Web.WebPages.dll
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\System.Web.WebPages.Razor.dll
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\WebGrease.dll
+E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\AutoMapper.xml
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\EntityFramework.xml
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\EntityFramework.SqlServer.xml
 E:\AIUB\ADVANCED PROGRAMMING WITH .NET [A]\LAB\Asp.NET-Builds\zeroHunger\bin\System.Web.Helpers.xml

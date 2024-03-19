@@ -11,6 +11,12 @@ namespace zeroHunger.Controllers
     public class EmployeeController : Controller
     {
         zeroHungerEntities db = new zeroHungerEntities();
+        private readonly zeroHungerEntities _db;
+
+        public EmployeeController()
+        {
+            _db = new zeroHungerEntities();
+        }
         // GET: Employee
         [Auth.EmployeeAccess]
         public static Order Convert(OrderDTO f)
@@ -117,6 +123,11 @@ namespace zeroHunger.Controllers
                 {
                     restaurant.orderStatus = "Collected";
                 }
+                var detail = MvcApplication.Mapper.Map<Detail>(order);
+                detail.rider = riderId; // Set rider
+
+                // Add the new Detail entity to the context
+                db.Details.Add(detail);
             }
 
             db.SaveChanges();

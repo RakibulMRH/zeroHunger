@@ -9,8 +9,9 @@
 @Html.ActionLink("Employees", "Employees", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Restaurants", "Restaurants", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Orders", "Index", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
+@Html.ActionLink("Details", "Details", "Admin", new { area = "" }, new { @class = "btn btn-outline-dark" })
 @Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "btn btn-danger" })
- 
+
 <table class="table">
     <tr>
         <th>
@@ -46,7 +47,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.resName)
-                </td>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.foodName)
             </td>
@@ -63,11 +64,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.riderId)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            
         </tr>
     }
 
