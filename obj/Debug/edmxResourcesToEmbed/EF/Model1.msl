@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="zeroHungerModelStoreContainer" CdmEntityContainer="zeroHungerEntities4">
+  <EntityContainerMapping StorageEntityContainer="zeroHungerModelStoreContainer" CdmEntityContainer="zeroHungerEntities5">
     <EntitySetMapping Name="Details">
       <EntityTypeMapping TypeName="zeroHungerModel.Detail">
         <MappingFragment StoreEntitySet="Details">
-          <ScalarProperty Name="resName" ColumnName="resName" />
           <ScalarProperty Name="collectId" ColumnName="collectId" />
           <ScalarProperty Name="rId" ColumnName="rId" />
           <ScalarProperty Name="rider" ColumnName="rider" />
           <ScalarProperty Name="foodName" ColumnName="foodName" />
           <ScalarProperty Name="timeRemained" ColumnName="timeRemained" />
           <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="resName" ColumnName="resName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -40,7 +40,6 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="zeroHungerModel.Order">
         <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="resName" ColumnName="resName" />
           <ScalarProperty Name="oId" ColumnName="oId" />
           <ScalarProperty Name="foodName" ColumnName="foodName" />
           <ScalarProperty Name="prsrvTime" ColumnName="prsrvTime" />
@@ -48,16 +47,17 @@
           <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
           <ScalarProperty Name="placeTime" ColumnName="placeTime" />
           <ScalarProperty Name="riderId" ColumnName="riderId" />
+          <ScalarProperty Name="resName" ColumnName="resName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Restaurants">
       <EntityTypeMapping TypeName="zeroHungerModel.Restaurant">
         <MappingFragment StoreEntitySet="Restaurants">
-          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="rId" ColumnName="rId" />
           <ScalarProperty Name="resName" ColumnName="resName" />
           <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

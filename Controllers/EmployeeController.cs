@@ -60,6 +60,8 @@ namespace zeroHunger.Controllers
             return list;
         }
         [HttpGet]
+        [Auth.EmployeeAccess]
+
         public ActionResult Index()
         {
             var data = db.Orders.ToList();
@@ -68,6 +70,8 @@ namespace zeroHunger.Controllers
             var convertedData = Convert(data);
             return View(convertedData);
         }
+        [Auth.EmployeeAccess]
+
 
         [HttpPost]
         public ActionResult Index(int rId, int riderId)
@@ -104,55 +108,62 @@ namespace zeroHunger.Controllers
         [HttpPost]
         public ActionResult Completed(int rId, int riderId)
         {
-            var ordersToComplete = db.Orders.Where(x => x.rId == rId && x.orderStatus == "Collecting").ToList();
-
-            // Convert all orders
-            var convertedData = Convert(db.Orders.ToList());
-
-            string originalOrderStatus = ""; // To store the original order status
-
-            foreach (var order in ordersToComplete)
+            try
             {
-                originalOrderStatus = order.orderStatus; // Save original status
-                order.orderStatus = "Collected";
-                order.riderId = riderId;
+                var ordersToComplete = db.Orders.Where(x => x.rId == rId && x.orderStatus == "Collecting").ToList();
 
-                // Update restaurant status
-                var restaurant = db.Orders.FirstOrDefault(r => r.rId == rId);
-                if (restaurant != null)
+                // Convert all orders
+                var convertedData = Convert(db.Orders.ToList());
+
+                string originalOrderStatus = ""; // To store the original order status
+
+                foreach (var order in ordersToComplete)
                 {
-                    restaurant.orderStatus = "Collected";
+                    originalOrderStatus = order.orderStatus; // Save original status
+                    order.orderStatus = "Collected";
+                    order.riderId = riderId;
+
+                    // Update restaurant status
+                    var restaurant = db.Orders.FirstOrDefault(r => r.rId == rId);
+                    if (restaurant != null)
+                    {
+                        restaurant.orderStatus = "Collected";
+                    }
+                    var detail = MvcApplication.Mapper.Map<Detail>(order);
+                    detail.rider = riderId; // Set rider
+
+                    // Add the new Detail entity to the context
+                    db.Details.Add(detail);
                 }
-                var detail = MvcApplication.Mapper.Map<Detail>(order);
-                detail.rider = riderId; // Set rider
 
-                // Add the new Detail entity to the context
-                db.Details.Add(detail);
-            }
+                db.SaveChanges();
 
-            db.SaveChanges();
+                var rider = db.Employees.FirstOrDefault(x => x.empId == riderId);
 
-            var rider = db.Employees.FirstOrDefault(x => x.empId == riderId);
-
-            if (rider != null)
-            {
-                if (rider.availablity == "Assigned")
+                if (rider != null)
                 {
-                    rider.availablity = "Available";
-                    Session["emp"] = rider;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    if (rider.availablity == "Assigned")
+                    {
+                        rider.availablity = "Available";
+                        Session["emp"] = rider;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["Msg"] = originalOrderStatus + " You are already assigned to an order";
+                    }
                 }
+
                 else
                 {
-                    TempData["Msg"] = originalOrderStatus + " You are already assigned to an order";
+                    TempData["Msg"] = "Rider not found"; // Handle the case where rider is not found
                 }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["Msg"] = "Rider not found"; // Handle the case where rider is not found
-            }
-
+                TempData["Msg"] = ex.Message;
+            }   
             return RedirectToAction("Index");
         }
 

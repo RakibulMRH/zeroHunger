@@ -28,10 +28,14 @@ namespace zeroHunger.Controllers
             data = data.OrderByDescending(x => x.oId).ToList();
             return View(Convert(data));
         }
+        [Auth.AdminAccess]
+
         public ActionResult Home()
         {
             return View();
         }
+        [Auth.AdminAccess]
+
         public ActionResult Employees()
         {
             var data = db.Employees.ToList();
@@ -39,6 +43,8 @@ namespace zeroHunger.Controllers
 
             return View(Convert(data));
         }
+        [Auth.AdminAccess]
+
         public ActionResult EmployeesRemove(int empId)
         {
             var emp = db.Employees.Find(empId);
@@ -46,6 +52,8 @@ namespace zeroHunger.Controllers
             db.SaveChanges();
             return RedirectToAction("Employees");
         }
+        [Auth.AdminAccess]
+
         [HttpPost]
         public ActionResult Employees(int? empId)
         {
@@ -56,6 +64,7 @@ namespace zeroHunger.Controllers
             db.SaveChanges();
             return RedirectToAction("Employees");
         }
+        [Auth.AdminAccess]
 
         public ActionResult Restaurants()
         {
@@ -64,6 +73,7 @@ namespace zeroHunger.Controllers
 
             return View(Convert(data));
         }
+        [Auth.AdminAccess]
 
         public ActionResult RestaurantsRemove(int rId)
         {
@@ -72,6 +82,8 @@ namespace zeroHunger.Controllers
             db.SaveChanges();
             return RedirectToAction("Restaurants");
         }
+        [Auth.AdminAccess]
+
         public ActionResult Details()
         {
             var mapper = MvcApplication.Mapper;
@@ -83,6 +95,8 @@ namespace zeroHunger.Controllers
 
             return View(dtoData);
         }
+        [Auth.AdminAccess]
+
         [HttpPost]
         public ActionResult Restaurants(int? rId)
         {
@@ -93,6 +107,8 @@ namespace zeroHunger.Controllers
             db.SaveChanges();
             return RedirectToAction("Restaurants");
         }
+        [Auth.AdminAccess]
+
         public static Order Convert(OrderDTO f)
         {
             return new Order
@@ -106,6 +122,8 @@ namespace zeroHunger.Controllers
                 riderId = f.riderId
             };
         }
+        [Auth.AdminAccess]
+
         public static OrderDTO Convert(Order f)
         {
             return new OrderDTO
@@ -119,6 +137,8 @@ namespace zeroHunger.Controllers
                 riderId = f.riderId
             };
         }
+        [Auth.AdminAccess]
+
 
         public static Employee Convert(EmployeeDTO emp)
         {
@@ -133,6 +153,7 @@ namespace zeroHunger.Controllers
                 availablity = emp.availablity
             };
         }
+        [Auth.AdminAccess]
 
         public static EmployeeDTO Convert(Employee emp)
         {
@@ -147,6 +168,7 @@ namespace zeroHunger.Controllers
                 availablity = emp.availablity
             };
         }
+        [Auth.AdminAccess]
 
         public static Restaurant Convert(RestaurantDTO res)
         {
@@ -158,6 +180,7 @@ namespace zeroHunger.Controllers
                 status = res.status
             };
         }
+        [Auth.AdminAccess]
 
         public static RestaurantDTO Convert(Restaurant res)
         {
@@ -169,6 +192,7 @@ namespace zeroHunger.Controllers
                 status = res.status
             };
         }
+        [Auth.AdminAccess]
 
         public static List<RestaurantDTO> Convert(List<Restaurant> data)
         {
@@ -179,6 +203,7 @@ namespace zeroHunger.Controllers
             }
             return list;
         }
+        [Auth.AdminAccess]
 
         public static List<EmployeeDTO> Convert(List<Employee> data)
         {
@@ -189,6 +214,8 @@ namespace zeroHunger.Controllers
             }
             return list;
         }
+        [Auth.AdminAccess]
+
         public static List<OrderDTO> Convert(List<Order> data)
         {
             var list = new List<OrderDTO>();

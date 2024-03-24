@@ -4,35 +4,35 @@
   ViewBag.Title = "AddFood";
 }
 
-<h2>AddFood</h2>
+<h2>Add your preserved food</h2>
 
 @using (Html.BeginForm()) 
 {
   @Html.AntiForgeryToken()
   
 <div class="form-horizontal">
-    <h4>OrderDTO</h4>
+    <h4>Feed a hungry person</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
     </div>
 
     <div class="form-group">
-        Food Name
+        <b>Food Name</b>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.foodName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.foodName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
             @Html.ValidationMessageFor(model => model.foodName, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        Preserve Time
-        <div class="col-md-10">
-            Date: <input type="date" id="prsrvDate" name="prsrvDate" />
-            Time: <input type="time" id="prsrvTime" name="prsrvTime" />
-            @Html.ValidationMessageFor(model => model.prsrvTime, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <b>Preserve Time</b>
+            <div class="col-md-10">
+                Date: <input type="date" id="prsrvDate" name="prsrvDate" required/>
+                Time: <input type="time" id="prsrvTime" name="prsrvTime" required/>
+                @Html.ValidationMessageFor(model => model.prsrvTime, "", new { @class = "text-danger" })
+            </div>
+</div>
 
 
     @if (Session["res"] != null)
@@ -42,7 +42,7 @@
             <input type="hidden" id="rId" name="rId" value="@res.rId">
         </div>
     }
-
+    <br />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-success" />
@@ -51,6 +51,4 @@
 </div>
 }
 
-<div>
-  @Html.ActionLink("Back to List", "Index")
-</div>
+

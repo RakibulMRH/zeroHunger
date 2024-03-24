@@ -10,10 +10,8 @@
     <Property Name="foodName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="timeRemained" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Details1" Relationship="Self.FK_Details_Details" FromRole="Details" ToRole="Details1" />
-    <NavigationProperty Name="Detail1" Relationship="Self.FK_Details_Details" FromRole="Details1" ToRole="Details" />
+    <Property Name="resName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Restaurant" Relationship="Self.FK_Details_Restaurants" FromRole="Details" ToRole="Restaurants" />
-    <Property Name="resName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -53,8 +51,8 @@
     <Property Name="orderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="placeTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="riderId" Type="Int32" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK_Orders_Restaurants" FromRole="Orders" ToRole="Employees" />
     <Property Name="resName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Orders_Restaurants" FromRole="Orders" ToRole="Employees" />
   </EntityType>
   <EntityType Name="Restaurant">
     <Key>
@@ -63,22 +61,10 @@
     <Property Name="rId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="resName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Details" Relationship="Self.FK_Details_Restaurants" FromRole="Restaurants" ToRole="Details" />
     <NavigationProperty Name="Login" Relationship="Self.FK_Restaurants_Logins" FromRole="Restaurants" ToRole="Logins" />
-    <Property Name="status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <Association Name="FK_Details_Details">
-    <End Role="Details" Type="Self.Detail" Multiplicity="1" />
-    <End Role="Details1" Type="Self.Detail" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Details">
-        <PropertyRef Name="collectId" />
-      </Principal>
-      <Dependent Role="Details1">
-        <PropertyRef Name="collectId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Details_Restaurants">
     <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
     <End Role="Details" Type="Self.Detail" Multiplicity="*" />
@@ -139,16 +125,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="zeroHungerEntities4" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="zeroHungerEntities5" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Details" EntityType="Self.Detail" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="Logins" EntityType="Self.Login" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
-    <AssociationSet Name="FK_Details_Details" Association="Self.FK_Details_Details">
-      <End Role="Details" EntitySet="Details" />
-      <End Role="Details1" EntitySet="Details" />
-    </AssociationSet>
     <AssociationSet Name="FK_Details_Restaurants" Association="Self.FK_Details_Restaurants">
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="Details" EntitySet="Details" />

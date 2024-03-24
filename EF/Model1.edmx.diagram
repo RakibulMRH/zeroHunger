@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3bdc1734596a460d900c514846421d4a" Name="Diagram1">
+      <Diagram DiagramId="4c3a98461f2d4d8795cada686c8cdf24" Name="Diagram1">
         <EntityTypeShape EntityType="zeroHungerModel.Detail" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="zeroHungerModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="zeroHungerModel.Login" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="zeroHungerModel.Order" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="zeroHungerModel.Restaurant" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="zeroHungerModel.FK_Details_Details" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="zeroHungerModel.Login" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeroHungerModel.Order" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zeroHungerModel.Restaurant" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="zeroHungerModel.FK_Details_Restaurants" ManuallyRouted="false" />
         <AssociationConnector Association="zeroHungerModel.FK_Employees_Employees" ManuallyRouted="false" />
         <AssociationConnector Association="zeroHungerModel.FK_Employees_Logins" ManuallyRouted="false" />

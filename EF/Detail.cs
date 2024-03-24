@@ -22,8 +22,6 @@ namespace zeroHunger.EF
         public string status { get; set; }
         public string resName { get; set; }
     
-        public virtual Detail Details1 { get; set; }
-        public virtual Detail Detail1 { get; set; }
         public virtual Restaurant Restaurant { get; set; }
     }
 }

@@ -55,18 +55,6 @@
     <Property Name="uname" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Details_Details">
-    <End Role="Details" Type="Self.Details" Multiplicity="1" />
-    <End Role="Details1" Type="Self.Details" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Details">
-        <PropertyRef Name="collectId" />
-      </Principal>
-      <Dependent Role="Details1">
-        <PropertyRef Name="collectId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Details_Restaurants">
     <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
     <End Role="Details" Type="Self.Details" Multiplicity="*" />
@@ -133,10 +121,6 @@
     <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Details_Details" Association="Self.FK_Details_Details">
-      <End Role="Details" EntitySet="Details" />
-      <End Role="Details1" EntitySet="Details" />
-    </AssociationSet>
     <AssociationSet Name="FK_Details_Restaurants" Association="Self.FK_Details_Restaurants">
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="Details" EntitySet="Details" />

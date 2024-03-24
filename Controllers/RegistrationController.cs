@@ -51,6 +51,11 @@ namespace zeroHunger.Controllers
         {
             try
             {
+                ViewData["eNameValue"] = e.eName;
+                ViewData["mobileValue"] = e.mobile;
+                ViewData["emailValue"] = e.email;
+                ViewData["unameValue"] = e.uname;
+                ViewData["passValue"] = pass;
                 Login l = new Login();
                 l.uname = uname;
                 l.pass = pass;
@@ -68,11 +73,7 @@ namespace zeroHunger.Controllers
 
                 TempData["Msg"] = "Registration Successful";
 
-                ViewData["eNameValue"] = e.eName;
-                ViewData["mobileValue"] = e.mobile;
-                ViewData["emailValue"] = e.email;
-                ViewData["unameValue"] = e.uname;
-                ViewData["passValue"] = pass;
+                
                 return RedirectToAction("Index", "Login");
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
@@ -90,6 +91,8 @@ namespace zeroHunger.Controllers
         [HttpPost]
         public ActionResult AddRestaurant(RestaurantDTO r, string uname, string pass)
         {
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     if (!string.IsNullOrEmpty(r.uname))
@@ -122,7 +125,7 @@ namespace zeroHunger.Controllers
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
                 {
-                    TempData["Msg"] = "Username already Exists" + "/n" + ex.InnerException.InnerException.Message;
+                    TempData["Msg"] = "Username already Exists";
                     return RedirectToAction("AddRestaurant");
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -131,7 +134,7 @@ namespace zeroHunger.Controllers
                     {
                         foreach (var validationError in entityValidationErrors.ValidationErrors)
                         {
-                            TempData["Msg"] = "Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage;
+                            TempData["Msg"] = "Username already Exists";
 
                             Console.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
                             return RedirectToAction("AddRestaurant");
@@ -140,7 +143,14 @@ namespace zeroHunger.Controllers
                     }
                 }
                 return RedirectToAction("AddRestaurant");
+
             }
+            else 
+            {
+                return RedirectToAction("AddRestaurant");
+
+            }
+        }
             
         }
     }

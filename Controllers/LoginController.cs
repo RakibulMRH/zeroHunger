@@ -62,7 +62,7 @@ namespace zeroHunger.Controllers
                     }
                     return RedirectToAction("Index", "Employee");
                 }
-                if (user.type.Equals("Restaurant") && res != null)
+                if (user.type.Equals("Restaurant"))
                 {
                     if (res.status.Equals("Verified"))
                     {

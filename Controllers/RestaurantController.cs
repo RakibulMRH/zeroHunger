@@ -13,8 +13,8 @@ namespace zeroHunger.Controllers
     {
         zeroHungerEntities db = new zeroHungerEntities();
         // GET: Restaurant
-       [Auth.RestaurantAccess]
-        
+        [Auth.RestaurantAccess]
+
         public static Order Convert(OrderDTO f)
         {
             return new Order
@@ -54,20 +54,24 @@ namespace zeroHunger.Controllers
             }
             return list;
         }
+        [Auth.RestaurantAccess]
 
         public ActionResult Index()
         {
             var data = db.Orders.ToList();
+            data = data.OrderByDescending(x => x.oId).ToList();
             var convertedData = Convert(data);
             return View(convertedData);
         }
+        [Auth.RestaurantAccess]
 
         [HttpGet]
         public ActionResult AddFood()
         {
             return View();
         }
-        
+        [Auth.RestaurantAccess]
+
         [HttpPost]
         public ActionResult AddFood(OrderDTO f)
         {
@@ -87,6 +91,7 @@ namespace zeroHunger.Controllers
             return RedirectToAction("Index");
         }
 
+        [Auth.RestaurantAccess]
 
         public ActionResult ViewFood()
         {

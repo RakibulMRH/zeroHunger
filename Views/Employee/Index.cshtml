@@ -58,7 +58,19 @@
                     @Html.DisplayFor(modelItem => item.foodName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.prsrvTime)
+                    @{
+                        DateTime preserveTime = item.prsrvTime;
+                        TimeSpan timeRemaining = preserveTime - DateTime.Now;
+
+                        if (timeRemaining.TotalMilliseconds > 0)
+                        {
+                            <span>@($"{timeRemaining.Days} days, {timeRemaining.Hours} hr, {timeRemaining.Minutes} min, {timeRemaining.Seconds} sec remaining")</span>
+                        }
+                        else
+                        {
+                            <span>Item expired</span>
+                        }
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.orderStatus)
@@ -67,27 +79,31 @@
                     @Html.DisplayFor(modelItem => item.riderId)
                 </td>
                 <td>
-                    @if (item.riderId.Equals(null) && item.orderStatus.Equals("collect"))
+                    @if (timeRemaining.TotalMilliseconds > 0)
                     {
-                        <form action="/Employee/Index" method="post">
-                            <input type="hidden" name="rId" value="@item.rId" />
-                            <input type="hidden" name="riderId" value="@emp.empId" />
-                            <input type="submit" value="Accept Order" name="" class="btn btn-success" />
-                        </form>
+
+                        if (item.riderId.Equals(null) && item.orderStatus.Equals("collect"))
+                        {
+                            <form action="/Employee/Index" method="post">
+                                <input type="hidden" name="rId" value="@item.rId" />
+                                <input type="hidden" name="riderId" value="@emp.empId" />
+                                <input type="submit" value="Accept Order" name="" class="btn btn-success" />
+                            </form>
+                        }
+                        if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collecting"))
+                        {
+                            <form action="/Employee/Completed" method="post">
+                                <input type="hidden" name="rId" value="@item.rId" />
+                                <input type="hidden" name="riderId" value="@emp.empId" />
+                                <input type="submit" value="Order Completed" name="" class="btn btn-success" />
+                            </form>
+                        }
+                        if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collected"))
+                        {
+                            <text>Order Completed</text>
+                        }
                     }
-                    @if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collecting"))
-                    {
-                        <form action="/Employee/Completed" method="post">
-                            <input type="hidden" name="rId" value="@item.rId" />
-                            <input type="hidden" name="riderId" value="@emp.empId" />
-                            <input type="submit" value="Order Completed" name="" class="btn btn-success" />
-                        </form>
-                    }
-                    @if (item.riderId.Equals(emp.empId) && item.orderStatus.Equals("Collected"))
-                    {
-                        <text>Order Completed</text>
-                    }
-                </td>
+                    </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

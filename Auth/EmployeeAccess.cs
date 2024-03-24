@@ -21,7 +21,6 @@ namespace zeroHunger.Auth
                     return true;
                 }
             }
-            httpContext.Session.Abandon();
             return false;
         }
     }
