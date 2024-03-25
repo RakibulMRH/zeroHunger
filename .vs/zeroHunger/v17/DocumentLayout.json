@@ -3,48 +3,16 @@
   "WorkspaceRootPath": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\controllers\\restaurantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:controllers\\restaurantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\views\\restaurant\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:views\\restaurant\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\views\\registration\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:views\\registration\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\views\\restaurant\\addfood.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:views\\restaurant\\addfood.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\ef\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:ef\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\ef\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:ef\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\auth\\restaurantaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:auth\\restaurantaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\auth\\employeeaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:auth\\employeeaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|e:\\aiub\\advanced programming with .net [a]\\lab\\asp.net-builds\\zerohunger\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B0E0BA75-EE63-4F02-8E3C-DDB07761DC88}|zeroHunger.csproj|solutionrelative:views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,143 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RestaurantController.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\RestaurantController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RestaurantController.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\RestaurantController.cs",
-              "RelativeToolTip": "Controllers\\RestaurantController.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAowD0AAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T19:52:18.982Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Model1.Context.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\EF\\Model1.Context.cs",
-              "RelativeDocumentMoniker": "EF\\Model1.Context.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\EF\\Model1.Context.cs",
-              "RelativeToolTip": "EF\\Model1.Context.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T19:46:09.554Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\EF\\Model1.edmx",
-              "RelativeDocumentMoniker": "EF\\Model1.edmx",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\EF\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "EF\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-03-24T19:45:35.854Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T19:42:33.253Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Restaurant\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Restaurant\\Index.cshtml",
+              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Restaurant\\Index.cshtml",
+              "RelativeToolTip": "Views\\Restaurant\\Index.cshtml",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAAAFQAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-25T07:06:04.117Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RegistrationController.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\RegistrationController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RegistrationController.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\RegistrationController.cs",
-              "RelativeToolTip": "Controllers\\RegistrationController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAwwAwAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T19:34:22.151Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EmployeeAccess.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Auth\\EmployeeAccess.cs",
-              "RelativeDocumentMoniker": "Auth\\EmployeeAccess.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Auth\\EmployeeAccess.cs",
-              "RelativeToolTip": "Auth\\EmployeeAccess.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T19:24:34.318Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Registration\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Registration\\Index.cshtml",
+              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Registration\\Index.cshtml",
+              "RelativeToolTip": "Views\\Registration\\Index.cshtml",
+              "ViewState": "AQIAACAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-25T06:50:56.632Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AddFood.cshtml",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Restaurant\\AddFood.cshtml",
-              "RelativeDocumentMoniker": "Views\\Restaurant\\AddFood.cshtml",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Restaurant\\AddFood.cshtml",
-              "RelativeToolTip": "Views\\Restaurant\\AddFood.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAB8AAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-24T18:55:50.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RestaurantAccess.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Auth\\RestaurantAccess.cs",
-              "RelativeDocumentMoniker": "Auth\\RestaurantAccess.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Auth\\RestaurantAccess.cs",
-              "RelativeToolTip": "Auth\\RestaurantAccess.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwBAAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T18:55:09.236Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "Controllers\\LoginController.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwCQAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T18:53:48.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Employee\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Employee\\Index.cshtml",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Employee\\Index.cshtml",
-              "RelativeToolTip": "Views\\Employee\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAYAAAA",
+              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Login\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Login\\Index.cshtml",
+              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Views\\Login\\Index.cshtml",
+              "RelativeToolTip": "Views\\Login\\Index.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAA4AAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-24T18:39:44.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
-              "ToolTip": "E:\\AIUB\\ADVANCED PROGRAMMING WITH .NET [A]\\LAB\\Asp.NET-Builds\\zeroHunger\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAuwIQAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T18:34:31.108Z",
+              "WhenOpened": "2024-03-25T06:50:59.238Z",
               "EditorCaption": ""
             }
           ]
